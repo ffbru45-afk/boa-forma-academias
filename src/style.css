@@ -29,3 +29,5 @@
 .santa-info p{font-size:12px;line-height:1.5;margin:8px 0 0}
 .santa-note{font-size:11px;margin:18px 0 0}
 @media(max-width:760px){.unit-switch-inner{gap:10px;flex-direction:column}.unit-switch{padding:9px 0}.unit-tabs{width:100%;max-width:350px}.unit-tabs button{flex:1}.santa-section{padding:40px 0 55px}.santa-top{grid-template-columns:1fr;gap:22px}.santa-photo{height:330px}.santa-info{grid-template-columns:1fr;gap:9px;margin-top:25px}.santa-info>div{padding:13px}}
+
+.santa-top{margin-bottom:28px}.santa-feature{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding:30px 0;border-top:1px solid #ffffff20}.santa-feature.reverse .santa-photo{order:2}.santa-feature .santa-photo{height:290px}.santa-feature h2{font-size:clamp(36px,4vw,50px)}.santa-feature p{max-width:400px}@media(max-width:760px){.santa-feature{grid-template-columns:1fr;gap:16px;padding:24px 0}.santa-feature.reverse .santa-photo{order:0}.santa-feature .santa-photo{height:230px}.santa-top{margin-bottom:18px}}
