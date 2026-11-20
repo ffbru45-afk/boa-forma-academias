@@ -6,7 +6,7 @@ import './musculacao.css';
 const WA=''; // Insira o número oficial no formato 5555999999999
 const whatsapp=WA?'https://wa.me/'+WA:null;
 const hero='https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1800&q=85';
-const mulher='https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1000&q=85';
+const mulher='https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1000&q=85';
 const beneficios=[
 [Dumbbell,'MAIS FORÇA','Carregar compras, subir escadas, brincar com os filhos: tudo fica mais fácil.'],
 [Bone,'OSSOS FORTES','O treino de força ajuda a fortalecer os ossos e proteger as articulações.'],
