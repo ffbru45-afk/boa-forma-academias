@@ -5,7 +5,7 @@ import './style.css';
 import './pilates.css';
 const WA='';
 const whatsapp=WA?'https://wa.me/'+WA:null;
-const photo1='https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1200&q=85';
+const photo1='https://images.unsplash.com/photo-1518611012118-696072aa579a?w=1200&q=85';
 const photo2='https://images.unsplash.com/photo-1518611012118-696072aa579a?w=1200&q=85';
 const benefits=[
 [PersonStanding,'POSTURA','Fortalece a musculatura que sustenta a coluna e ajuda a melhorar a postura.'],
