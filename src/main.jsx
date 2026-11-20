@@ -1,48 +1,29 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
-import { ArrowUpRight, Menu, X, Dumbbell, HeartPulse, Clock3, MapPin, Instagram, MessageCircle, ChevronDown } from 'lucide-react';
+import {createRoot} from 'react-dom/client';
+import {Menu,X,ArrowRight,Instagram,MapPin,Clock3,Check,MessageCircle,Bone,Footprints,HeartPulse} from 'lucide-react';
 import './style.css';
-
-// Edite os dados abaixo com as informações oficiais da academia.
-const CONFIG = {
-  nome: 'BOA FORMA',
-  subtitulo: 'ACADEMIAS',
-  whatsapp: '', // Exemplo: 5555999999999 (somente números)
-  instagram: '', // URL completa do perfil
-  endereco: 'Consulte nossa localização',
-  horarios: 'Entre em contato para consultar os horários',
+const WA=''; // Insira o número oficial com DDI e DDD para ativar os links.
+const IG='https://www.instagram.com/boaformaitaara/';
+const W=WA?'https://wa.me/'+WA:null;
+const fotos={
+musculacao:'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&q=85',
+pilates:'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=1200&q=85',
+senior:'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1100&q=85',
+familia:'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1200&q=85'
 };
-const servicos = [
-  { icon: Dumbbell, num: '01', titulo: 'Musculação', descricao: 'Estrutura e acompanhamento para evoluir no seu ritmo.' },
-  { icon: HeartPulse, num: '02', titulo: 'Pilates', descricao: 'Movimento, mobilidade e equilíbrio para sua rotina.' },
-  { icon: Clock3, num: '03', titulo: 'Seu momento', descricao: 'Uma experiência acolhedora para cuidar de você.' },
-];
-function App() {
-  const [menuAberto, setMenuAberto] = React.useState(false);
-  const whatsappLink = CONFIG.whatsapp ? 'https://wa.me/' + CONFIG.whatsapp : null;
-  const fechar = () => setMenuAberto(false);
-  return <>
-    <header className="topo">
-      <a className="marca" href="#inicio" onClick={fechar}><span className="marca-simbolo">B<span>F</span></span><span>{CONFIG.nome}<small>{CONFIG.subtitulo}</small></span></a>
-      <nav className={menuAberto ? 'nav aberto' : 'nav'} aria-label="Navegação principal">
-        <a href="#inicio" onClick={fechar}>Início</a><a href="#modalidades" onClick={fechar}>Modalidades</a><a href="#sobre" onClick={fechar}>Sobre nós</a><a href="#contato" onClick={fechar}>Contato</a>
-      </nav>
-      <a className="botao topo-cta" href="#contato">Fale conosco <ArrowUpRight size={17}/></a>
-      <button className="menu-toggle" aria-label={menuAberto ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menuAberto} onClick={() => setMenuAberto(!menuAberto)}>{menuAberto ? <X/> : <Menu/>}</button>
-    </header>
-    <main>
-      <section className="hero" id="inicio">
-        <div className="hero-luz" aria-hidden="true"/><div className="hero-linhas" aria-hidden="true"/>
-        <div className="hero-conteudo container"><span className="eyebrow"><span className="ponto"/> MOVIMENTO QUE TRANSFORMA</span><h1>SEU RITMO.<br/><em>SUA EVOLUÇÃO.</em></h1><p>Um espaço para fortalecer o corpo, encontrar equilíbrio e construir sua melhor rotina, um treino de cada vez.</p><div className="acoes"><a className="botao botao-claro" href="#modalidades">Conheça nossas modalidades <ArrowUpRight size={19}/></a><a className="link-texto" href="#sobre">Conheça a Boa Forma <ArrowUpRight size={17}/></a></div></div>
-        <a className="descer" href="#modalidades">EXPLORE <ChevronDown size={17}/></a><span className="hero-marca" aria-hidden="true">BF</span>
-      </section>
-      <section className="faixa" aria-label="Valores"><div>ENERGIA <span>✳</span> MOVIMENTO <span>✳</span> EQUILÍBRIO <span>✳</span> EVOLUÇÃO <span>✳</span> BOA FORMA</div></section>
-      <section className="secao container" id="modalidades"><div className="secao-cabecalho"><div><span className="eyebrow escuro">O QUE FAZEMOS</span><h2>ENCONTRE O SEU <em>MOVIMENTO.</em></h2></div><p>Escolha a modalidade que combina com os seus objetivos e com a sua rotina.</p></div><div className="grade-servicos">{servicos.map(({icon:Icon,num,titulo,descricao})=><article className="servico" key={num}><div className="servico-topo"><Icon size={31} strokeWidth={1.5}/><span>{num} / 03</span></div><div><h3>{titulo}</h3><p>{descricao}</p></div><a href="#contato" aria-label={'Saiba mais sobre '+titulo}><ArrowUpRight size={23}/></a></article>)}</div></section>
-      <section className="sobre" id="sobre"><div className="container sobre-grid"><div className="sobre-grafico" aria-hidden="true"><span>BF</span><div className="anel anel-um"/><div className="anel anel-dois"/></div><div className="sobre-texto"><span className="eyebrow">MUITO ALÉM DO TREINO</span><h2>UM ESPAÇO PARA <em>EVOLUIR.</em></h2><p>Na Boa Forma Academias, acreditamos no poder do movimento para transformar a rotina. Cada conquista importa, e cada pessoa tem seu próprio caminho.</p><a className="botao botao-claro" href="#contato">Venha conhecer <ArrowUpRight size={18}/></a></div></div></section>
-      <section className="secao container contato" id="contato"><span className="eyebrow escuro">VAMOS CONVERSAR?</span><h2>O PRÓXIMO PASSO <em>COMEÇA AQUI.</em></h2><p>Quer conhecer nossas modalidades, horários e estrutura? Entre em contato com a equipe.</p><div className="contato-grade"><div className="info"><Clock3/><div><strong>Horários</strong><span>{CONFIG.horarios}</span></div></div><div className="info"><MapPin/><div><strong>Localização</strong><span>{CONFIG.endereco}</span></div></div><div className="info"><MessageCircle/><div><strong>Atendimento</strong><span>Fale com nossa equipe</span></div></div></div><div className="acoes">{whatsappLink ? <a className="botao botao-escuro" href={whatsappLink} target="_blank" rel="noreferrer">Conversar no WhatsApp <ArrowUpRight size={19}/></a> : <span className="aviso">Adicione o número oficial no arquivo src/main.jsx para ativar o WhatsApp.</span>}{CONFIG.instagram && <a className="link-texto link-escuro" href={CONFIG.instagram} target="_blank" rel="noreferrer"><Instagram size={18}/> Instagram</a>}</div></section>
-    </main><footer className="rodape"><div className="container rodape-interno"><a className="marca" href="#inicio"><span className="marca-simbolo">B<span>F</span></span><span>{CONFIG.nome}<small>{CONFIG.subtitulo}</small></span></a><span>© {new Date().getFullYear()} Boa Forma Academias. Todos os direitos reservados.</span><a href="#inicio">Voltar ao topo ↑</a></div></footer>
-    {whatsappLink && <a className="whatsapp" href={whatsappLink} target="_blank" rel="noreferrer" aria-label="Abrir WhatsApp"><MessageCircle size={25}/></a>}
-  </>;
+function Acao({children,outline=false,href='#contato'}){return <a className={'btn '+(outline?'outline':'')} href={href}>{children}<ArrowRight size={17}/></a>}
+function Titulo({tag,children}){return <><div className="kicker">{tag}</div><h2>{children}</h2></>}
+function App(){
+const [menu,setMenu]=React.useState(false);
+return <><header className="header"><div className="wrap navwrap"><a href="#inicio" className="logo"><span className="logo-mark">BOA<br/><b>FORMA</b></span><small>ACADEMIAS</small></a><nav className={menu?'nav open':'nav'}>{[['Início','#inicio'],['Musculação','#musculacao'],['Pilates','#pilates'],['Horários','#horarios'],['Contato','#contato']].map(([n,l])=><a key={n} href={l} onClick={()=>setMenu(false)}>{n}</a>)}</nav><a className="btn navcta" href={W||'#contato'}><MessageCircle size={15}/> Fale conosco</a><button className="menu" aria-label="Abrir menu" onClick={()=>setMenu(!menu)}>{menu?<X/>:<Menu/>}</button></div></header>
+<main><section id="inicio" className="hero"><div className="wrap"><div className="hero-head"><div><div className="kicker">MUSCULAÇÃO & PILATES · ITAARA - RS</div><h1>TREINE FORTE.<br/><em>VIVA MELHOR.</em></h1></div><p>A 1ª academia de musculação e o 1º studio de Pilates de Itaara. Escolha abaixo como você quer começar — a gente cuida do resto.</p></div><div className="hero-cards"><article id="musculacao" className="hero-card" style={{backgroundImage:'linear-gradient(0deg,#000e,transparent 85%),url('+fotos.musculacao+')'}}><span className="pill">18 ANOS DE HISTÓRIA</span><div><h2>MUSCULAÇÃO</h2><p>Força, massa muscular e disposição. Treino orientado para iniciantes, terceira idade e quem já treina.</p><Acao href="#comparativo">Conhecer Musculação</Acao></div></article><article id="pilates" className="hero-card" style={{backgroundImage:'linear-gradient(0deg,#000e,transparent 85%),url('+fotos.pilates+')'}}><span className="pill">1º STUDIO DE ITAARA</span><div><h2>PILATES</h2><p>Postura, mobilidade e alívio de dores. Aulas com aparelhos e acompanhamento de perto.</p><Acao href="#comparativo">Conhecer Pilates</Acao></div></article></div></div></section>
+<section className="stats"><div className="wrap statgrid"><div><strong>18</strong><span>anos de Musculação</span></div><div><strong>6</strong><span>anos de Studio Pilates</span></div><div><strong>1ª</strong><span>academia de Itaara</span></div></div></section>
+<section className="section wrap benefits"><div><Titulo tag="POR QUE TREINAR">NÃO É SÓ SOBRE TER UM CORPO <i>BONITO.</i><br/>É SOBRE <i>NÃO</i> TER UM CORPO DOENTE.</Titulo><p>Treinar é cuidar do seu futuro. Força muscular protege ossos, articulações e a sua independência — em qualquer idade.</p><div className="benefit"><Bone/><div><h3>EVITE: <i>OSTEOPOROSE</i></h3><p>Ossos fracos e mais risco de fratura. O treino de força estimula ossos mais resistentes.</p></div></div><div className="benefit"><Footprints/><div><h3>EVITE: <i>QUEDAS</i></h3><p>Na terceira idade, um tombo pode ser o começo da perda de independência. Equilíbrio se treina.</p></div></div><div className="benefit"><HeartPulse/><div><h3>INVISTA EM <i>SAÚDE</i></h3><p>Movimente-se com orientação e respeite seu próprio ritmo.</p></div></div></div><div className="benefit-image"><img src={fotos.senior} alt="Pessoa praticando exercícios de força"/></div></section>
+<section id="comparativo" className="section wrap compare"><Titulo tag="NA DÚVIDA?">QUAL É A MELHOR PARA VOCÊ?</Titulo><p>Não existe resposta errada — e muita gente faz as duas. Veja qual combina mais com o seu objetivo.</p><div className="compare-grid"><div className="compare-card"><h3>MUSCULAÇÃO</h3><p>É pra você se...</p>{['Quer ganhar força e massa muscular','Busca melhorar o condicionamento e ter mais disposição','Gosta de treinar no seu ritmo'].map(t=><div className="check" key={t}><Check/>{t}</div>)}<a href="#contato">Ver Musculação →</a></div><div className="compare-card light"><h3>PILATES</h3><p>É pra você se...</p>{['Quer melhorar a postura e a mobilidade','Prefere movimentos controlados e de baixo impacto','Quer flexibilidade, equilíbrio e consciência corporal'].map(t=><div className="check" key={t}><Check/>{t}</div>)}<a href="#contato">Ver Pilates →</a></div></div></section>
+<section className="section wrap"><div className="family"><img src={fotos.familia} alt="Ambiente de musculação"/><div><Titulo tag="PARA TODA A FAMÍLIA">FORÇA QUE INSPIRA.<br/><i>LAÇOS QUE TRANSFORMAM.</i></Titulo><p>Pais, filhos, avós: aqui cada um treina no seu nível, com orientação. Mais que treino — momentos que ficam para sempre.</p><a className="btn outline" href={W||'#contato'}><MessageCircle size={17}/> Perguntar sobre planos</a></div></div></section>
+<section id="horarios" className="section hours"><div className="wrap hours-grid"><div><Titulo tag="HORÁRIOS">ABERTOS DE <i>SEGUNDA A SEXTA</i></Titulo><p>Musculação e Pilates funcionam nos mesmos turnos. As aulas de Pilates têm horário marcado — combine o seu pelo WhatsApp.</p></div><div className="hours-card"><h3><Clock3 size={20}/> SEGUNDA A SEXTA</h3><div><small>MANHÃ</small><strong>08:00 – 11:00</strong></div><div><small>TARDE E NOITE</small><strong>14:00 – 20:30</strong></div></div></div></section>
+<section className="section wrap insta"><div className="insta-head"><Titulo tag="NO INSTAGRAM">ACOMPANHE A BOA FORMA</Titulo><a className="btn outline" href={IG} target="_blank" rel="noreferrer"><Instagram size={17}/> @boaformaitaara ↗</a></div><div className="insta-grid"><a href={IG} target="_blank" rel="noreferrer"><img src={fotos.musculacao} alt="Musculação"/></a><a href={IG} target="_blank" rel="noreferrer"><img src={fotos.senior} alt="Treinamento"/></a><a href={IG} target="_blank" rel="noreferrer"><img src={fotos.familia} alt="Academia"/></a><a href={IG} target="_blank" rel="noreferrer"><img src={fotos.pilates} alt="Pilates"/></a></div><small className="disclaimer">Imagens ilustrativas. As publicações oficiais estão no Instagram.</small></section>
+<section id="contato" className="section wrap visit"><div><Titulo tag="ONDE ESTAMOS">VENHA NOS <i>VISITAR</i></Titulo><p>Estamos em Itaara, num espaço amplo e acessível, com rampa de entrada. Chegue para conhecer ou fale com a gente antes.</p><div className="visit-buttons"><a className="btn" href={W||'#contato'}><MessageCircle size={17}/> WhatsApp</a><a className="btn outline" href="https://www.google.com/maps/search/?api=1&query=Boa+Forma+Academias+Itaara+RS" target="_blank" rel="noreferrer"><MapPin size={17}/> Como chegar</a><a className="btn outline" href={IG} target="_blank" rel="noreferrer"><Instagram size={17}/> Instagram</a></div></div><div className="facade"><div className="facade-placeholder"><MapPin size={40}/><span>BOA FORMA ACADEMIAS</span><small>Adicione aqui a foto original da fachada</small></div><span className="facade-label">📍 Nossa fachada · Itaara – RS</span></div></section>
+<section className="lastcta"><div className="wrap lastcta-grid"><div><h2>SEU PRIMEIRO TREINO COMEÇA<br/>COM UMA MENSAGEM.</h2><p>Chame no WhatsApp, tire suas dúvidas sobre planos e agende uma aula experimental.</p></div><a className="btn black" href={W||'#contato'}><MessageCircle size={18}/> Chamar no WhatsApp</a></div></section></main><footer><div className="wrap">BOA FORMA ACADEMIAS <span>ITAARA · RS</span></div></footer>{W&&<a className="floating" href={W} target="_blank" rel="noreferrer"><MessageCircle size={20}/> WhatsApp</a>}</>;
 }
-
 createRoot(document.getElementById('root')).render(<React.StrictMode><App/></React.StrictMode>);
