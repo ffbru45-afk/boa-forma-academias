@@ -8,8 +8,8 @@ const W=WA?'https://wa.me/'+WA:null;
 const fotos={
 musculacao:'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&q=85',
 pilates:'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=1200&q=85',
-senior:'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1100&q=85',
-familia:'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1200&q=85'
+senior:'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1100&q=85',
+familia:'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&q=85'
 };
 function Acao({children,outline=false,href='#contato'}){return <a className={'btn '+(outline?'outline':'')} href={href}>{children}<ArrowRight size={17}/></a>}
 function Titulo({tag,children}){return <><div className="kicker">{tag}</div><h2>{children}</h2></>}
